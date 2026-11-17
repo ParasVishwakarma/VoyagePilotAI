@@ -1,0 +1,25 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+import App from "./App";
+import "./App.css";
+import "leaflet/dist/leaflet.css";
+
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import theme from "./theme";
+import { NotificationProvider } from "./context/NotificationContext";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+
+            <NotificationProvider>
+                <App />
+            </NotificationProvider>
+
+        </ThemeProvider>
+    </React.StrictMode>
+);

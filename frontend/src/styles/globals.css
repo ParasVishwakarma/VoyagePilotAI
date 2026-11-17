@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100vh;
+    background: #F8FAFC;
+    color: #0F172A;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    text-transform: none !important;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* ==============================================================================
+   Leaflet Real Map & Animated Motion Styles
+   ============================================================================== */
+.leaflet-container {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+/* Pulsing Airport Radar */
+.pulse-airport-marker {
+    position: relative;
+    width: 28px;
+    height: 28px;
+}
+.pulse-airport-marker .radar-ring {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.25);
+    border: 2px solid #10B981;
+    animation: radar-pulse 2s infinite ease-out;
+    top: 0;
+    left: 0;
+}
+.pulse-airport-marker .radar-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #10B981;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+}
+
+@keyframes radar-pulse {
+    0% {
+        transform: scale(0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+/* Moving Airplane in Motion Marker */
+.airplane-motion-marker {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+    border: 2px solid #10B981;
+    color: #10B981;
+    transition: transform 0.08s linear;
+}
+
+/* Hotel Stay Pin */
+.hotel-pin-marker {
+    background: #10B981;
+    color: #FFFFFF;
+    padding: 4px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 750;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    border: 2px solid #FFFFFF;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.hotel-pin-marker:hover {
+    transform: scale(1.08) translateY(-2px);
+}
+
+/* Destination Pin */
+.dest-pin-marker {
+    background: #6366F1;
+    color: #FFFFFF;
+    padding: 4px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 750;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+    border: 2px solid #FFFFFF;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.dest-pin-marker:hover {
+    transform: scale(1.08) translateY(-2px);
+}
+
+/* Modern Leaflet Popup Customization */
+.leaflet-popup-content-wrapper {
+    border-radius: 18px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12) !important;
+    border: 1px solid #E2E8F0 !important;
+}
+.leaflet-popup-content {
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+.leaflet-popup-tip-container {
+    display: none;
+}
+
+/* ==============================================================================
+   Futuristic Cyber-Aero 2026 UI Animations & Effects
+   ============================================================================== */
+@keyframes cyber-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes holographic-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes holographic-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.6)); }
+}
+
+@keyframes scanner-sweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+
+@keyframes float-subtle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+.cyber-card {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(226, 232, 240, 0.85) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(16, 185, 129, 0.08) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 20px 45px -10px rgba(16, 185, 129, 0.16), 0 0 0 1px rgba(16, 185, 129, 0.3) !important;
+    border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+    transition: 0.75s ease;
+    pointer-events: none;
+}
+
+.cyber-card:hover::after {
+    left: 140%;
+}
+
+/* Holographic Shimmer Pill */
+.holographic-pill {
+    background: linear-gradient(90deg, #10B981, #00F5D4, #0284C7, #8B5CF6, #10B981);
+    background-size: 300% 100%;
+    animation: cyber-shimmer 6s linear infinite;
+    color: #FFFFFF !important;
+    font-weight: 850 !important;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+/* Futuristic Scanning HUD Bar */
+.telemetry-ticker {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+    border-radius: 14px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15), inset 0 0 12px rgba(16, 185, 129, 0.08);
+}
+
+.telemetry-ticker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.25), transparent);
+    animation: scanner-sweep 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Floating AI Orb Widget */
+.floating-ai-dock {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1200;
+    animation: float-subtle 4s ease-in-out infinite;
+}
+
+.ai-orb-core {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10B981 0%, #00F5D4 50%, #0F766E 100%);
+    display: grid;
+    place-items: center;
+    color: #FFFFFF;
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45), 0 0 20px rgba(0, 245, 212, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.ai-orb-core:hover {
+    transform: scale(1.1) rotate(8deg);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.6), 0 0 30px rgba(0, 245, 212, 0.6);
+}
+
+.ai-orb-ring {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    top: -8px;
+    left: -8px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(16, 185, 129, 0.5);
+    animation: holographic-spin 10s linear infinite;
+    pointer-events: none;
+}
+
+
+/* ==============================================================================
+   Next-Gen Aerospace Cyberpunk & Mission Control HUD Styles (2026)
+   ============================================================================== */
+
+/* Subtle High-Tech Aerospace Dot Grid Background */
+.aerospace-grid-bg {
+    background-image: 
+        radial-gradient(rgba(16, 185, 129, 0.12) 1.2px, transparent 1.2px),
+        radial-gradient(rgba(14, 165, 233, 0.08) 1.2px, transparent 1.2px);
+    background-size: 36px 36px, 72px 72px;
+    background-position: 0 0, 18px 18px;
+}
+
+/* Aerospace HUD Corner Brackets Card */
+.hud-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 0 1px 1px rgba(16, 185, 129, 0.1);
+}
+
+.hud-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px -12px rgba(16, 185, 129, 0.22), 0 0 0 1px rgba(16, 185, 129, 0.4);
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Glowing Neon Borders */
+.neon-border-glow {
+    position: relative;
+}
+.neon-border-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #10B981, #00F5D4, #38BDF8, #10B981);
+    background-size: 300% 300%;
+    animation: cyber-shimmer 8s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Monospace Aerospace Telemetry Badge */
+.telemetry-code {
+    font-family: "JetBrains Mono", "SF Mono", Consolas, Menlo, monospace !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.8px !important;
+    font-weight: 750 !important;
+    text-transform: uppercase !important;
+}
+
+/* Laser Scanner Beam */
+@keyframes laser-sweep-vertical {
+    0% { top: 0%; opacity: 0; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.laser-scanner-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00F5D4, #10B981, #00F5D4, transparent);
+    box-shadow: 0 0 14px #00F5D4, 0 0 8px #10B981;
+    pointer-events: none;
+    z-index: 5;
+    animation: laser-sweep-vertical 3.5s ease-in-out infinite;
+}
+
+/* Animated Equalizer Sound Bars */
+.sound-bars-container {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+.sound-bar {
+    width: 2.5px;
+    background: #10B981;
+    border-radius: 2px;
+    animation: sound-bounce 0.8s ease-in-out infinite alternate;
+}
+.sound-bar:nth-of-type(1) { height: 30%; animation-delay: 0.1s; }
+.sound-bar:nth-of-type(2) { height: 90%; animation-delay: 0.3s; }
+.sound-bar:nth-of-type(3) { height: 60%; animation-delay: 0.2s; }
+.sound-bar:nth-of-type(4) { height: 100%; animation-delay: 0.4s; }
+
+@keyframes sound-bounce {
+    0% { height: 20%; }
+    100% { height: 100%; }
+}
+
+/* Rotating Radar Scope */
+.radar-scope-circle {
+    position: relative;
+    border-radius: 50%;
+    border: 1.5px solid rgba(16, 185, 129, 0.4);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.02) 70%, transparent 100%);
+    overflow: hidden;
+}
+.radar-scope-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform-origin: 0 0;
+    background: linear-gradient(135deg, rgba(0, 245, 212, 0.4) 0%, transparent 80%);
+    border-radius: 100% 0 0 0;
+    animation: holographic-spin 4s linear infinite;
+    pointer-events: none;
+}

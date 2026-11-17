@@ -1,0 +1,23 @@
+VoyagePilot AI — Review Notes (16 Nov 2026)
+
+Changes applied
+1. Fixed the AI Recommendations page runtime bug: filteredRecommendations was declared inside the loader but referenced in the component render. Filtering is now derived safely with useMemo.
+2. Made analytics data loading resilient to array and Spring Page response shapes. A failure to load one trip's flights no longer prevents the rest of the analytics data from rendering.
+3. Added a working ResetPassword route component. It clearly explains that password reset is not yet implemented by the backend; it does not pretend to reset a password.
+4. Hardened AI Insights and recommendation display against missing disruption fields and non-string AI response values.
+5. Confirmed Flights.jsx imports FlightStatusChart from the actual existing path: components/analytics/FlightStatusChart.jsx.
+
+Validation
+- ESLint passed for every changed JavaScript/JSX file.
+- A full Vite build could not be completed in this review environment because the uploaded node_modules contains Windows optional native packages, while this review runtime is Linux (missing @rolldown/binding-linux-x64-gnu). This is an environment/package-platform mismatch, not a reported source compilation error. Run npm run build on the Windows development machine.
+- The full-project ESLint run reports pre-existing issues in files outside this focused update. They were not mass-edited to avoid introducing unrelated regressions.
+
+Known backend/frontend gaps found during review
+- Backend AuthController currently exposes register/login only; there is no forgot-password or reset-password API. The frontend reset route therefore remains an explanatory placeholder.
+- Backend UserController does not expose DELETE /api/users/me, while Settings.jsx currently calls that endpoint for account deletion. That action will fail until a real, secured backend endpoint is implemented.
+- Dashboard.jsx contains a hard-coded AI alert count ("03") and static operational messaging. These should be connected to real backend status/alert data before presenting them as live metrics.
+- Settings.jsx and several older components have lint findings from the existing codebase. Review those separately rather than applying broad automatic fixes.
+
+Important
+- Backend business logic, database schema, API route names, JWT configuration, and environment configuration were not changed.
+- node_modules, .git history, IDE workspace files, and build output are excluded from this source archive. Reuse your existing dependencies; do not delete your current project.
